@@ -1,6 +1,7 @@
 import sys
 import os.path
 from PySide6.QtWidgets import *
+from PySide6.QtCore import QCoreApplication
 
 class CreateAccount(QDialog):
     def __init__(self, parent):
@@ -33,7 +34,7 @@ class CreateAccount(QDialog):
         cancelBtn = QPushButton("Cancel", self)
         cancelBtn.move(60,130)
         cancelBtn.resize(80, 35)
-        cancelBtn.clicked.connect(self.cancel)
+        cancelBtn.clicked.connect(self.close)
 
         createBtn = QPushButton("Create",self)
         createBtn.move(180,130)
@@ -47,6 +48,7 @@ class CreateAccount(QDialog):
         # ID 나 PW가 빈칸으로 입력되면 생성 시켜주면 안됨
         if id == '' or pw == '':
             loginFail_msgBox = QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
+            return
         # ID가 이미 존재하는 아이디인지 확인하고 안내메세지
         file = 'C:\\Users\\3DONS\\PycharmProjects\\routine\\account.txt'
         if os.path.isfile(file):
@@ -57,14 +59,17 @@ class CreateAccount(QDialog):
                     accountDict[key_value[0]] = key_value[1]
                 if id in accountDict:
                     idExist_msgBox = QMessageBox.warning(self, "중복 아이디", "이미 존재하는 아이디입니다.\n아이디를 다시 설정 해주세요.")
+                    self.id_lineEdit.setText('')
+                    self.pw_lineEdit.setText('')
                     return
         # 아니면 고대로 account.txt에 입력해주고 account 생성
         with open('account.txt','a') as f:
             f.write(id + "," + pw + "\n")
             accountMakeSuccess = QMessageBox.about(self, "계정 생성", "계정이 등록되었습니다.")
+            self.close()
+            # 등록메세지가 뜨고 닫아줘야함
 
-    def cancel(self):
-        pass
+
 if __name__ == '__main__':
    app = QApplication(sys.argv)
    ex = CreateAccount()

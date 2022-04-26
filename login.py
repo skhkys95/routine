@@ -1,18 +1,20 @@
 import sys
 import os.path
 from createAccount import CreateAccount
+from main import Main
 from PySide6.QtWidgets import *
 from PySide6.QtCore import Qt
 
-class MyApp(QWidget):
+class Login(QWidget):
 
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.show()
 
     def initUI(self):
         # 윈도우창 만들기
-        self.setWindowTitle('My Medicine Routine')
+        self.setWindowTitle('Login')
         self.resize(700, 700)
 
         # 제목 라벨
@@ -46,7 +48,6 @@ class MyApp(QWidget):
         self.id_lineEdit.resize(200,30)
         self.pw_lineEdit.move(220,295)
         self.pw_lineEdit.resize(200,30)
-
         # 로그인 버튼
         login = QPushButton("Login",self)
         login.move(430,245)
@@ -59,7 +60,6 @@ class MyApp(QWidget):
         make_account_bnt.resize(200,50)
         make_account_bnt.move(250,500)
         make_account_bnt.clicked.connect(self.clicked_createAccount)
-
         self.show()
 
     # 파일에 로그인 정보랑 일치 하는게 있는지 보고 있으면 통과, 없으면 불통
@@ -85,19 +85,25 @@ class MyApp(QWidget):
             # for문을 돌다가 딕셔너리 key랑 ID가 일치하는게 있으면 value가 password랑 일치하는게 있는지 확인
             # 아이디가 존재하는지 체크
             if id not in accountDict:
-                print("아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
                 loginFail_msgBox = QMessageBox.warning(self,"아이디 또는 비밀번호 오류","아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
-
+                self.id_lineEdit.setText('')
+                self.pw_lineEdit.setText('')
             # 아이디가 존재하면 pw와 일치하는지 체크
             # 로그인 성공하면 메인 페이지로 넘어야가함 연결 포인트!
             elif accountDict[id] == pw:
                 print("로그인 성공")
+                self.main()
             # 아이디가 존재하지만 pw와 일치하지 않는 경우
             else:
-                print("아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
                 loginFail_msgBox = QMessageBox.warning(self,"아이디 또는 비밀번호 오류","아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
+                self.id_lineEdit.setText('')
+                self.pw_lineEdit.setText('')
 
-
+    def main(self):
+        self.hide()
+        self.second = Main(self)
+        self.second.exec()
+        self.show()
 
     # 아이디 비밀번호를 입력받아서 변수에 저장해놓고 파일에 써놔야함 파일로 연결
     # createAccount 버튼을 누르면 새로운 클래스로 연결하고 파일도 새로 만들어서 연결
@@ -106,5 +112,5 @@ class MyApp(QWidget):
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)
-   ex = MyApp()
+   ex = Login()
    sys.exit(app.exec())
