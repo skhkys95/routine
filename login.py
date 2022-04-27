@@ -21,7 +21,7 @@ class Login(QWidget):
         titleBox = QGroupBox(self)
         titleBox.move(160,100)
         titleBox.resize(370,60)
-        title = QLabel('My Medicine Routine',self)
+        title = QLabel('My Medicine Routine', self)
         title.setAlignment(Qt.AlignCenter)
         title.move(170,100)
         title.resize(350,50)
@@ -48,12 +48,12 @@ class Login(QWidget):
         self.id_lineEdit.resize(200,30)
         self.pw_lineEdit.move(220,295)
         self.pw_lineEdit.resize(200,30)
+
         # 로그인 버튼
         login = QPushButton("Login",self)
         login.move(430,245)
         login.resize(80,80)
         login.clicked.connect(self.loginMessage)
-
 
         # 계정 만들기 버튼
         make_account_bnt = QPushButton('Create an account',self)
@@ -98,6 +98,20 @@ class Login(QWidget):
                 loginFail_msgBox = QMessageBox.warning(self,"아이디 또는 비밀번호 오류","아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
                 self.id_lineEdit.setText('')
                 self.pw_lineEdit.setText('')
+        else:
+            loginFail_msgBox = QMessageBox.warning(self, "아이디 또는 비밀번호 오류",
+                                                   "아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
+            self.id_lineEdit.setText('')
+            self.pw_lineEdit.setText('')
+
+    def closeEvent(self, QCloseEvent):
+        close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
+
+        if close == QMessageBox.Yes:
+            QCloseEvent.accept()
+            sys.exit()
+        else:
+            QCloseEvent.ignore()
 
     def main(self):
         self.hide()

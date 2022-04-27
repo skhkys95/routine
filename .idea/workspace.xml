@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인, 계정 설정 페이지 완성">
+    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/createAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/createAccount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,8 +131,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.login" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.createAccount" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -160,7 +160,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650596442958</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현">
+      <created>1650932498020</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650932498020</updated>
+    </task>
+    <task id="LOCAL-00004" summary="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현">
+      <created>1650932515401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650932515401</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,7 +190,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="로그인, 계정 설정 페이지 완성" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인, 계정 설정 페이지 완성" />
+    <MESSAGE value="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

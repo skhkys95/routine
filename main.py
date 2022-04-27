@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import *
-
+from routineSetting import RoutineSetting
 
 class Main(QDialog, QWidget):
     def __init__(self,parent):
@@ -9,23 +9,47 @@ class Main(QDialog, QWidget):
         self.show()
 
     def initUI(self):
-        self.setWindowTitle("MAIN")
+        self.setWindowTitle("My Medicine Routine")
         self.resize(700, 700)
 
-        # 체크리스트의 갯수만큼 크기가 달라져야한다.
         checkList = QGroupBox('Check List', self)
-        checkList.move(160,160)
-        checkList.resize(370,360)
+        checkList.move(150,140)
+        checkList.resize(390,390)
+
+        tableWidget = QTableWidget(self)
+        tableWidget.move(160,160)
+        tableWidget.resize(370,360)
+        # row수는 사용자 설정에 따라 달라짐
+        tableWidget.setRowCount(5)
+        tableWidget.setColumnCount(4)
+
+        # tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        # self.tableWidget.setEditTriggers(QAbstractItemView.DoubleClicked)
+        # self.tableWidget.setEditTriggers(QAbstractItemView.AllEditTriggers)
+
+        headerList = ["시간", "이름", "설명", "완료"]
+        tableWidget.setHorizontalHeaderLabels(headerList)
+
+        tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
 
-        listNum1 = QLabel("1. 10:20 비타민 C 1회차",self)
-        listNum2 = QLabel("2. 14:25 소화제   취침전",self)
-        listNum1.move(190,220)
-        listNum1.resize(250,80)
-        listNum2.move(182,270)
-        listNum2.resize(250,80)
+        tableWidget.setItem(0,0,QTableWidgetItem("14:26"))
+        tableWidget.setItem(0,1,QTableWidgetItem("소화제"))
+        tableWidget.setItem(0,2,QTableWidgetItem("식후 30분"))
+        tableWidget.setItem(0,3,QTableWidgetItem("체크박스"))
+
+        # tableWidget.setItem(i,0,QTableWidgetItem("계산된 설정 시간")
+        # tableWidget.setItem((i,1, QTableWidgetItem"설정된 이름"))
 
         checkBox = QCheckBox(self)
+        tableWidget.setCellWidget(1,3,checkBox)
+        checkBox.stateChanged.connect(self.check_state_checkBox)
+        # layout = QVBoxLayout()
+        # layout.addWidget(tableWidget)
+        # self.setLayout(layout)
+
 
 
         # progress bar 생성
@@ -36,7 +60,6 @@ class Main(QDialog, QWidget):
         progressBar.setMaximum(5)
 
 
-
         # information 그룹박스
         information = QGroupBox('Information', self)
         information.move(380,610)
@@ -45,6 +68,8 @@ class Main(QDialog, QWidget):
         settingBnt = QPushButton('Setting',self)
         settingBnt.move(390,640)
         settingBnt.resize(85,40)
+        settingBnt.clicked.connect(self.clicked_routineSetting)
+
 
         historyBnt = QPushButton('History',self)
         historyBnt.move(485,640)
@@ -54,22 +79,21 @@ class Main(QDialog, QWidget):
         statBnt.move(580,640)
         statBnt.resize(85,40)
 
+    def clicked_routineSetting(self):
+        rouSet = RoutineSetting(self)
+
+    # checkBox의 상태가 변할때에 나오는 함수로, 시간 값을 바꿔주는 역할 + range밖에서 선택했을때는 makeup option으로 유도하는 역할 + progress bar 게이지 올려주는 역할
+    def check_state_checkBox(self, state):
+        pass
+
     def closeEvent(self, QCloseEvent):
         close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
 
         if close == QMessageBox.Yes:
             QCloseEvent.accept()
-            sys
+            sys.exit()
         else:
             QCloseEvent.ignore()
-
-        #임시로 만든 로그인페이지로 돌아가는 버튼
-        homeBnt = QPushButton("home", self)
-        homeBnt.clicked.connect(self.Home)
-
-
-    def Home(self):
-        self.close()
 
 
 if __name__ == '__main__':
