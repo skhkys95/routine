@@ -1,20 +1,25 @@
 import sys
 import os.path
 from createAccount import CreateAccount
-from main import Main
 from PySide6.QtWidgets import *
 from PySide6.QtCore import Qt
 
-class Login(QWidget):
+class Login(QDialog):
 
     def __init__(self):
         super().__init__()
         self.initUI()
         self.show()
+        self.closeWindow = "Yes"
+        # test ys
+        self.id_lineEdit.setText("d")
+        self.pw_lineEdit.setText("d")
+        # end test
 
     def initUI(self):
         # 윈도우창 만들기
         self.setWindowTitle('Login')
+        self.setWindowModality(Qt.ApplicationModal)
         self.resize(700, 700)
 
         # 제목 라벨
@@ -91,8 +96,11 @@ class Login(QWidget):
             # 아이디가 존재하면 pw와 일치하는지 체크
             # 로그인 성공하면 메인 페이지로 넘어야가함 연결 포인트!
             elif accountDict[id] == pw:
+                self.closeWindow = "No"
                 print("로그인 성공")
-                self.main()
+                loginSuccess_msgBox = QMessageBox.about(self,"로그인 성공","환영합니다.")
+                self.close()
+                # 로그인에 성공하면 로그인창을 닫고 메인페이지로 넘어가야함
             # 아이디가 존재하지만 pw와 일치하지 않는 경우
             else:
                 loginFail_msgBox = QMessageBox.warning(self,"아이디 또는 비밀번호 오류","아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.")
@@ -105,24 +113,24 @@ class Login(QWidget):
             self.pw_lineEdit.setText('')
 
     def closeEvent(self, QCloseEvent):
-        close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
+        if self.closeWindow == "NO":
+            return
+            close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
+            if close == QMessageBox.Yes:
+                QCloseEvent.accept()
+                sys.exit()
+            else:
+                QCloseEvent.ignore()
 
-        if close == QMessageBox.Yes:
-            QCloseEvent.accept()
-            sys.exit()
-        else:
-            QCloseEvent.ignore()
-
-    def main(self):
-        self.hide()
-        self.second = Main(self)
-        self.second.exec()
-        self.show()
+    # def main(self):
+    #     self.second = Main()
+    #     self.show()
 
     # 아이디 비밀번호를 입력받아서 변수에 저장해놓고 파일에 써놔야함 파일로 연결
     # createAccount 버튼을 누르면 새로운 클래스로 연결하고 파일도 새로 만들어서 연결
     def clicked_createAccount(self):
-        acc = CreateAccount(self)
+        acc = CreateAccount()
+        acc.exec()
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)

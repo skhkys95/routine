@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현">
+    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="루틴 설정(약 명칭 받기) 페이지 완성">
+      <change afterPath="$PROJECT_DIR$/methodToTake.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/createAccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/createAccount.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSetting.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +45,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.login">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\3DONS\PycharmProjects\routine" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.routineCountTime">
     <configuration name="createAccount" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,6 +116,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="routineCountTime" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="routine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routineCountTime.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,10 +160,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.login" />
-        <item itemvalue="Python.createAccount" />
+        <item itemvalue="Python.routineCountTime" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.login" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.createAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650932515401</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="루틴 설정(약 명칭 받기) 페이지 완성">
+      <created>1651047823776</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651047823776</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,14 +229,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="로그인, 계정 설정 페이지 완성" />
     <MESSAGE value="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인 페이지에서 메인 페이지로 넘어가면 로그인페이지 Hide되는 방법 구현" />
+    <MESSAGE value="루틴 설정(약 명칭 받기) 페이지 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="루틴 설정(약 명칭 받기) 페이지 완성" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/login.py</url>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

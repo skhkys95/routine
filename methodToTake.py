@@ -1,9 +1,9 @@
 import sys
 from PySide6.QtWidgets import *
 
-from methodToTake import MethodToTake
+from routineSettingBasedOnCount import RoutineSettingBasedOnCount
 
-class RoutineSetting(QDialog):
+class MethodToTake(QDialog):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -17,13 +17,17 @@ class RoutineSetting(QDialog):
         set_name_groupbox.move(10,20)
         set_name_groupbox.resize(290,160)
 
-        routineName = QLabel("약 명칭", self)
+        routineName = QLabel("복용 방식", self)
         routineName.move(20, 30)
         routineName.resize(100, 80)
 
-        self.routineName_lineEdit = QLineEdit(self)
-        self.routineName_lineEdit.move(90, 55)
-        self.routineName_lineEdit.resize(185, 30)
+        self.routineMethod = QComboBox(self)
+        self.routineMethod.addItem('횟수 기반')
+        self.routineMethod.addItem('수면 기반')
+        self.routineMethod.addItem('식사 기반')
+
+        self.routineMethod.move(90, 55)
+        self.routineMethod.resize(185, 30)
 
         backBnt = QPushButton("back", self)
         backBnt.move(60,130)
@@ -38,14 +42,14 @@ class RoutineSetting(QDialog):
     # 넥스트를 눌렸을때 바로 넘어가는것이 아니고 빈칸이 있는지 확인하고 있으면 입력 양식이 맞지 않으니 다시 입력하라고 경고하고 돌려보내기
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
     def next(self):
-        global medicineName
-        medicineName = self.routineName_lineEdit.text()
-        if medicineName == '':
-            QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
-            return
-        print(medicineName)
-        mtt = MethodToTake()
-        mtt.exec()
+        global routineMethodName
+        routineMethodName = self.routineMethod.currentText()
+        if routineMethodName == '횟수 기반':
+            rsboc = RoutineSettingBasedOnCount()
+            rsboc.exec()
+        elif routineMethodName == '수면 기반':
+            pass
+            print(routineMethodName)
 
 
     def back(self):
@@ -54,5 +58,5 @@ class RoutineSetting(QDialog):
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)
-   ex = RoutineSetting()
+   ex = MethodToTake()
    sys.exit(app.exec())

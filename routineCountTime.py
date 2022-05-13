@@ -1,9 +1,7 @@
 import sys
 from PySide6.QtWidgets import *
 
-from methodToTake import MethodToTake
-
-class RoutineSetting(QDialog):
+class RoutineCountTime(QDialog):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -13,25 +11,38 @@ class RoutineSetting(QDialog):
         self.setWindowTitle("My Medicine Routine")
         self.resize(310, 200)
 
-        set_name_groupbox = QGroupBox('Routine Setting', self)
+        set_name_groupbox = QGroupBox('Routine Setting(횟수기반)', self)
         set_name_groupbox.move(10,20)
-        set_name_groupbox.resize(290,160)
+        set_name_groupbox.resize(290,170)
 
-        routineName = QLabel("약 명칭", self)
-        routineName.move(20, 30)
-        routineName.resize(100, 80)
+        tableWidget = QTableWidget(self)
+        tableWidget.move(20, 35)
+        tableWidget.resize(270, 110)
+        # row수는 사용자 설정에 따라 달라짐
+        tableWidget.setRowCount(5)
+        tableWidget.setColumnCount(1)
 
-        self.routineName_lineEdit = QLineEdit(self)
-        self.routineName_lineEdit.move(90, 55)
-        self.routineName_lineEdit.resize(185, 30)
+        # tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        # self.tableWidget.setEditTriggers(QAbstractItemView.DoubleClicked)
+        # self.tableWidget.setEditTriggers(QAbstractItemView.AllEditTriggers)
+
+        headerList = ["시간"]
+        tableWidget.setHorizontalHeaderLabels(headerList)
+
+        tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        timeEdit = QTimeEdit(self)
+        tableWidget.setCellWidget(0, 0, timeEdit)
 
         backBnt = QPushButton("back", self)
-        backBnt.move(60,130)
+        backBnt.move(60,150)
         backBnt.resize(80, 35)
         backBnt.clicked.connect(self.back)
 
         nextBtn = QPushButton("Next",self)
-        nextBtn.move(180,130)
+        nextBtn.move(180,150)
         nextBtn.resize(80,35)
         nextBtn.clicked.connect(self.next)
 
@@ -44,8 +55,6 @@ class RoutineSetting(QDialog):
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
         print(medicineName)
-        mtt = MethodToTake()
-        mtt.exec()
 
 
     def back(self):
@@ -54,5 +63,5 @@ class RoutineSetting(QDialog):
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)
-   ex = RoutineSetting()
+   ex = RoutineCountTime()
    sys.exit(app.exec())
