@@ -129,6 +129,7 @@ class Main(QMainWindow):
     def clicked_routineSetting(self):
         routineSet = RoutineSetting()
         routineSet.exec()
+        a = 0
 
     # checkBox의 상태가 변할때에 나오는 함수로, 시간 값을 바꿔주는 역할 + range 밖에서 선택했을때는 makeup option으로 유도하는 역할 + progress bar 게이지 올려주는 역할
     def check_state_checkBox(self, state):

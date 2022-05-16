@@ -2,6 +2,9 @@ import sys
 from PySide6.QtWidgets import *
 
 from routineSettingBasedOnCount import RoutineSettingBasedOnCount
+from routineSettingBasedOnSleep import RoutineSettingBasedOnSleep
+
+from globals import globalVar
 
 class MethodToTake(QDialog):
     def __init__(self):
@@ -48,11 +51,12 @@ class MethodToTake(QDialog):
             rsboc = RoutineSettingBasedOnCount()
             rsboc.exec()
         elif routineMethodName == '수면 기반':
-            pass
-            print(routineMethodName)
+            rsbos = RoutineSettingBasedOnSleep()
+            rsbos.exec()
 
 
     def back(self):
+        globalVar.a = 100
         self.close()
 
 

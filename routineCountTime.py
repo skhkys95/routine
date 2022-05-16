@@ -1,6 +1,9 @@
 import sys
 from PySide6.QtWidgets import *
 
+from globals import globalVar
+
+
 class RoutineCountTime(QDialog):
     def __init__(self):
         super().__init__()
@@ -19,7 +22,7 @@ class RoutineCountTime(QDialog):
         tableWidget.move(20, 35)
         tableWidget.resize(270, 110)
         # row수는 사용자 설정에 따라 달라짐
-        tableWidget.setRowCount(5)
+        tableWidget.setRowCount(int(globalVar.routineCount))
         tableWidget.setColumnCount(1)
 
         # tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -33,8 +36,13 @@ class RoutineCountTime(QDialog):
         # tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
+
+        # 시간을 적어야하는 횟수를 앞에서 받아와서 for 문으로 옵션  @@@질문!! for문으로 구현해서 각 셀에 타임에디트 들어가도록!
         timeEdit = QTimeEdit(self)
         tableWidget.setCellWidget(0, 0, timeEdit)
+        # for i in range(int(globalVar.routineCount)):
+        #     timeEdit = QTimeEdit(i,self)
+        #     tableWidget.setCellWidget(0, i, timeEdit)
 
         backBnt = QPushButton("back", self)
         backBnt.move(60,150)
@@ -48,6 +56,9 @@ class RoutineCountTime(QDialog):
 
     # 넥스트를 눌렸을때 바로 넘어가는것이 아니고 빈칸이 있는지 확인하고 있으면 입력 양식이 맞지 않으니 다시 입력하라고 경고하고 돌려보내기
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
+    # 그동안 저장된 사용자 입력값들을 계산해서 메인페이지에 양식에 맞게 표현
+    # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
+
     def next(self):
         global medicineName
         medicineName = self.routineName_lineEdit.text()

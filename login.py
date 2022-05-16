@@ -113,14 +113,14 @@ class Login(QDialog):
             self.pw_lineEdit.setText('')
 
     def closeEvent(self, QCloseEvent):
-        if self.closeWindow == "NO":
+        if self.closeWindow == "No":
             return
-            close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
-            if close == QMessageBox.Yes:
-                QCloseEvent.accept()
-                sys.exit()
-            else:
-                QCloseEvent.ignore()
+        close = QMessageBox.question(self,"종료 확인","종료 하시겠습니까?", QMessageBox.Yes|QMessageBox.No)
+        if close == QMessageBox.Yes:
+            QCloseEvent.accept()
+            sys.exit()
+        else:
+            QCloseEvent.ignore()
 
     # def main(self):
     #     self.second = Main()
