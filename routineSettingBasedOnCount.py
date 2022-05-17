@@ -3,7 +3,7 @@ import sys
 from PySide6.QtGui import QIntValidator
 from PySide6.QtWidgets import *
 
-from globals import globalVar
+import globals
 from routineCountTime import RoutineCountTime
 
 
@@ -47,18 +47,17 @@ class RoutineSettingBasedOnCount(QDialog):
     # 넥스트를 눌렸을때 바로 넘어가는것이 아니고 빈칸이 있는지 확인하고 있으면 입력 양식이 맞지 않으니 다시 입력하라고 경고하고 돌려보내기
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
     def next(self):
-        globalVar.routineCount = self.routineName_lineEdit.text()
-        if globalVar.routineCount == '':
+        globals.routineCount = self.routineName_lineEdit.text()
+        if globals.routineCount == '':
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
-        elif globalVar.routineCount == '0':
+        elif globals.routineCount == '0':
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
         else:
             #routineCount를 받아서 다음 화면에 넘겨줄때 알려줘야한다. 3회이면 시간을 3번 쓸수 있도록 유도
             rct = RoutineCountTime()
             rct.exec()
-        print(globalVar.routineCount)
 
     def back(self):
         self.close()

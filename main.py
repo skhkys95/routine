@@ -13,7 +13,7 @@ class Main(QMainWindow):
         super().__init__()
         loginModal = Login()
         loginModal.exec()
-
+        #사실은 여기서 로그인을 성공하고 난 뒤 사용자가 setting이 있는지 없는지 판단해서 없으면 바로 setting으로 넘겨야됨
         self.initUI()
         self.show()
         self.timer = QTimer(self)

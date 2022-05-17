@@ -1,7 +1,6 @@
 import sys
 from PySide6.QtWidgets import *
 
-
 class RoutineSleepInterval(QDialog):
     def __init__(self):
         super().__init__()
@@ -12,25 +11,22 @@ class RoutineSleepInterval(QDialog):
         self.setWindowTitle("My Medicine Routine")
         self.resize(310, 200)
 
-        set_name_groupbox = QGroupBox('Routine Setting(수면기반)', self)
+        set_name_groupbox = QGroupBox('Routine Setting', self)
         set_name_groupbox.move(10, 20)
-        set_name_groupbox.resize(290, 170)
+        set_name_groupbox.resize(290, 160)
 
-        morningTime = QLabel("기상 시간", self)
-        morningTime.move(40, 25)
-        morningTime.resize(100, 80)
+        routineName = QLabel("간격", self)
+        routineName.move(20, 30)
+        routineName.resize(100, 80)
 
-        nightTime = QLabel("취침 시간", self)
-        nightTime.move(40, 65)
-        nightTime.resize(100, 80)
+        self.routineInterval = QComboBox(self)
+        self.routineInterval.addItem('0분')
+        self.routineInterval.addItem('30분')
+        self.routineInterval.addItem('1시간')
+        self.routineInterval.addItem('2시간')
 
-        morningTimeEdit = QTimeEdit(self)
-        morningTimeEdit.move(140, 50)
-        morningTimeEdit.resize(100, 30)
-
-        nightTimeEdit = QTimeEdit(self)
-        nightTimeEdit.move(140, 90)
-        nightTimeEdit.resize(100, 30)
+        self.routineInterval.move(90, 55)
+        self.routineInterval.resize(185, 30)
 
         backBnt = QPushButton("back", self)
         backBnt.move(60, 130)
@@ -48,8 +44,9 @@ class RoutineSleepInterval(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
-        buttonReply = QMessageBox.information(self, "입력 확인", "이대로 설정하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
+        buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
+            # 지금까지의 설정 정리 요약해서 main에 띄워줘야함
             pass
         elif buttonReply == QMessageBox.No:
             return

@@ -2,9 +2,9 @@ import sys
 from PySide6.QtWidgets import *
 
 from routineSettingBasedOnCount import RoutineSettingBasedOnCount
+from routineSettingBasedOnMeal import RoutineSettingBasedOnMeal
 from routineSettingBasedOnSleep import RoutineSettingBasedOnSleep
 
-from globals import globalVar
 
 class MethodToTake(QDialog):
     def __init__(self):
@@ -42,10 +42,8 @@ class MethodToTake(QDialog):
         nextBtn.resize(80,35)
         nextBtn.clicked.connect(self.next)
 
-    # 넥스트를 눌렸을때 바로 넘어가는것이 아니고 빈칸이 있는지 확인하고 있으면 입력 양식이 맞지 않으니 다시 입력하라고 경고하고 돌려보내기
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
     def next(self):
-        global routineMethodName
         routineMethodName = self.routineMethod.currentText()
         if routineMethodName == '횟수 기반':
             rsboc = RoutineSettingBasedOnCount()
@@ -53,10 +51,11 @@ class MethodToTake(QDialog):
         elif routineMethodName == '수면 기반':
             rsbos = RoutineSettingBasedOnSleep()
             rsbos.exec()
-
+        elif routineMethodName == '식사 기반':
+            rsbom =RoutineSettingBasedOnMeal()
+            rsbom.exec()
 
     def back(self):
-        globalVar.a = 100
         self.close()
 
 

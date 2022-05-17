@@ -4,6 +4,8 @@ from PySide6.QtWidgets import *
 # from PySide6.QtCore import *
 # from routineCountTime import RoutineCountTime
 from routineSetSleep import RoutineSetSleep
+import globals
+
 
 
 class RoutineSettingBasedOnSleep(QDialog):
@@ -62,15 +64,15 @@ class RoutineSettingBasedOnSleep(QDialog):
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
         elif self.routineSleepMorning.isChecked() == True and self.routineSleepNight.isChecked() == False:
-            setTimeMorningOrNight = "morning"
+            globals.setTimeMorningOrNight = "morning"
             rss = RoutineSetSleep()
             rss.exec()
         elif self.routineSleepMorning.isChecked() == False and self.routineSleepNight.isChecked() == True:
-            setTimeMorningOrNight = "night"
+            globals.setTimeMorningOrNight = "night"
             rss = RoutineSetSleep()
             rss.exec()
         else:
-            setTimeMorningOrNight = "both"
+            globals.setTimeMorningOrNight = "both"
             rss = RoutineSetSleep()
             rss.exec()
 
