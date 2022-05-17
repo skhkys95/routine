@@ -30,13 +30,13 @@ class RoutineSettingBasedOnSleep(QDialog):
         self.routineSleepMorning.move(130, 30)
         self.routineSleepMorning.resize(100, 80)
         # routineSleepMorning.setChecked(False)
-        self.routineSleepMorning.stateChanged.connect(self.checkbox_toggled)
+        # self.routineSleepMorning.stateChanged.connect(self.checkbox_toggled)
 
         self.routineSleepNight = QCheckBox("취침 전", self)
         self.routineSleepNight.move(230, 30)
         self.routineSleepNight.resize(100, 80)
         # routineSleepNight.setChecked(False)
-        self.routineSleepNight.stateChanged.connect(self.checkbox_toggled)
+        # self.routineSleepNight.stateChanged.connect(self.checkbox_toggled)
 
         backBnt = QPushButton("back", self)
         backBnt.move(60,130)
@@ -49,11 +49,11 @@ class RoutineSettingBasedOnSleep(QDialog):
         nextBtn.clicked.connect(self.next)
 
 
-    def checkbox_toggled(self):
-        if self.routineSleepMorning.isChecked():
-            print("Morning")
-        if self.routineSleepNight.isChecked():
-            print("Night")
+    # def checkbox_toggled(self):
+    #     if self.routineSleepMorning.isChecked():
+    #         print("Morning")
+    #     if self.routineSleepNight.isChecked():
+    #         print("Night")
 
     # 넥스트를 누르면 기상 후 / 취침 전 중 체크된 영역을 확인해서 정보를 넘겨준다.
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
