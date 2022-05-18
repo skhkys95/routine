@@ -40,13 +40,12 @@ class RoutineCountTime(QDialog):
         # arr에 넣어서 설정할때 첫번째 값보다 두번째 시간이 빠를때 설정 실패 하도록
         # timeEdit = QTimeEdit(self)
         # tableWidget.setCellWidget(0, 0, timeEdit)
-        # self.timeList = []
+        self.timeList = []
         for i in range(int(globals.routineCount)):
             self.timeEdit = QTimeEdit(self)
             self.timeEdit.setDisplayFormat('hh:mm')
             self.tableWidget.setCellWidget(i, 0, self.timeEdit)
-            # self.timeList.append(self.timeEdit.text())
-
+            self.timeList.append(self.timeEdit)
 
         backBnt = QPushButton("back", self)
         backBnt.move(60,150)
@@ -64,19 +63,20 @@ class RoutineCountTime(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
-        self.timeEdit.toString(self.timeEdit)
-        # self.inputList = []
-        # for i in range(int(globalVar.routineCount)):
-        #     print(self.tableWidget.item(i, 0))
-        print(self.timeEdit)
-            # self.timeEdit.setText()
-            # self.timeList.append(i.setText())
-
-        # print(self.timeList)
-        # if self.arr[2].time()>self.arr[3].time():
-        #     QMessageBox.warning(self, "입력 오류", "시간 순서대로 입력해야 합니다.\n입력 하신 내용을 다시 확인 해주세요.")
-        if self.timeList != sorted(self.timeList):
+        self.inputList = []
+        for i in range(int(globals.routineCount)):
+            self.inputList.append(self.timeList[i].text())
+        print(self.inputList)
+        print(sorted(self.inputList))
+        if self.inputList != sorted(self.inputList):
             QMessageBox.warning(self, "입력 오류", "시간 순서대로 입력해야 합니다.\n입력 하신 내용을 다시 확인 해주세요.")
+            return
+        buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
+        if buttonReply == QMessageBox.Yes:
+            # 지금까지의 설정 정리 요약해서 main에 띄워줘야함
+            pass
+        elif buttonReply == QMessageBox.No:
+            return
 
     def back(self):
         self.close()
