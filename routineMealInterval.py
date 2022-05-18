@@ -49,8 +49,10 @@ class RoutineMealInterval(QDialog):
             return
 
     def back(self):
+        from routineSetMeal import RoutineSetMeal
+        rsm = RoutineSetMeal()
         self.close()
-
+        rsm.exec()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

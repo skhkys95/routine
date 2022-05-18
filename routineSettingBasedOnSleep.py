@@ -3,7 +3,7 @@ import sys
 from PySide6.QtWidgets import *
 # from PySide6.QtCore import *
 # from routineCountTime import RoutineCountTime
-from routineSetSleep import RoutineSetSleep
+from routineSetSleepTime import RoutineSetSleepTime
 import globals
 
 
@@ -65,19 +65,25 @@ class RoutineSettingBasedOnSleep(QDialog):
             return
         elif self.routineSleepMorning.isChecked() == True and self.routineSleepNight.isChecked() == False:
             globals.setTimeMorningOrNight = "morning"
-            rss = RoutineSetSleep()
+            rss = RoutineSetSleepTime()
+            self.close()
             rss.exec()
         elif self.routineSleepMorning.isChecked() == False and self.routineSleepNight.isChecked() == True:
             globals.setTimeMorningOrNight = "night"
-            rss = RoutineSetSleep()
+            rss = RoutineSetSleepTime()
+            self.close()
             rss.exec()
         else:
             globals.setTimeMorningOrNight = "both"
-            rss = RoutineSetSleep()
+            rss = RoutineSetSleepTime()
+            self.close()
             rss.exec()
 
     def back(self):
         self.close()
+        from methodToTake import MethodToTake
+        mtt = MethodToTake()
+        mtt.exec()
 
 
 if __name__ == '__main__':

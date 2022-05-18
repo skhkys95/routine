@@ -57,10 +57,14 @@ class RoutineSettingBasedOnCount(QDialog):
         else:
             #routineCount를 받아서 다음 화면에 넘겨줄때 알려줘야한다. 3회이면 시간을 3번 쓸수 있도록 유도
             rct = RoutineCountTime()
+            self.close()
             rct.exec()
 
     def back(self):
         self.close()
+        from methodToTake import MethodToTake
+        mtt = MethodToTake()
+        mtt.exec()
 
 
 if __name__ == '__main__':

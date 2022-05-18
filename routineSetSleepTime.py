@@ -5,7 +5,7 @@ import globals
 from routineSleepInterval import RoutineSleepInterval
 
 
-class RoutineSetSleep(QDialog):
+class RoutineSetSleepTime(QDialog):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -62,13 +62,17 @@ class RoutineSetSleep(QDialog):
 
     def next(self):
         rsi = RoutineSleepInterval()
+        self.close()
         rsi.exec()
 
     def back(self):
         self.close()
+        from routineSettingBasedOnSleep import RoutineSettingBasedOnSleep
+        rsbos = RoutineSettingBasedOnSleep()
+        rsbos.exec()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = RoutineSetSleep()
+    ex = RoutineSetSleepTime()
     sys.exit(app.exec())

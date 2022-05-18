@@ -44,6 +44,7 @@ class RoutineSetting(QDialog):
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
         mtt = MethodToTake()
+        self.close()
         mtt.exec()
 
 

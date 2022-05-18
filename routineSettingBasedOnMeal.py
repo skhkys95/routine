@@ -59,23 +59,25 @@ class RoutineSettingBasedOnMeal(QDialog):
     # 경우의 수 3가지에 따라 다른 상태를 저장한 변수를 만들어서 다음 파일에서 확인해서 그에 맞는 상황 연출
     def next(self):
         globals.checked = []
-
         if self.routineMealBreakfast.isChecked():
             globals.checked.append("breakfast")
         if self.routineMealLunch.isChecked():
             globals.checked.append("lunch")
         if self.routineMealDinner.isChecked():
             globals.checked.append("dinner")
-        print(globals.checked)
         if not globals.checked:
-            QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인 해주세요.")
+            QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인해주세요.")
             return
         else:
             rsm = RoutineSetMeal()
+            self.close()
             rsm.exec()
 
     def back(self):
         self.close()
+        from methodToTake import MethodToTake
+        mtt = MethodToTake()
+        mtt.exec()
 
 
 if __name__ == '__main__':

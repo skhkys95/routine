@@ -11,7 +11,7 @@ class RoutineSleepInterval(QDialog):
         self.setWindowTitle("My Medicine Routine")
         self.resize(310, 200)
 
-        set_name_groupbox = QGroupBox('Routine Setting', self)
+        set_name_groupbox = QGroupBox('Routine Setting(수면기반)', self)
         set_name_groupbox.move(10, 20)
         set_name_groupbox.resize(290, 160)
 
@@ -52,7 +52,10 @@ class RoutineSleepInterval(QDialog):
             return
 
     def back(self):
+        from routineSetSleepTime import RoutineSetSleepTime
+        rss = RoutineSetSleepTime()
         self.close()
+        rss.exec()
 
 
 if __name__ == '__main__':

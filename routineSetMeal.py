@@ -69,12 +69,15 @@ class RoutineSetMeal(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
+        self.close()
         rsi = RoutineMealInterval()
         rsi.exec()
 
     def back(self):
+        from routineSettingBasedOnMeal import RoutineSettingBasedOnMeal
+        rsbom = RoutineSettingBasedOnMeal()
         self.close()
-
+        rsbom.exec()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

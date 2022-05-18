@@ -80,6 +80,9 @@ class RoutineCountTime(QDialog):
 
     def back(self):
         self.close()
+        from routineSettingBasedOnCount import RoutineSettingBasedOnCount
+        rsboc = RoutineSettingBasedOnCount()
+        rsboc.exec()
 
 
 if __name__ == '__main__':
