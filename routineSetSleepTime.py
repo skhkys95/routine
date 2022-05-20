@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import *
 
-import globals
+from globals import Global
 from routineSleepInterval import RoutineSleepInterval
 
 
@@ -48,9 +48,9 @@ class RoutineSetSleepTime(QDialog):
 
     # 이전 설정에서 받아온 변수에 따라 시간 옵션 받기
     def setMorningOrNight(self):
-        if globals.setTimeMorningOrNight == 'morning':
+        if Global.setTimeMorningOrNight == 'morning':
             self.nightTimeEdit.setEnabled(False)
-        elif globals.setTimeMorningOrNight == 'night':
+        elif Global.setTimeMorningOrNight == 'night':
             self.morningTimeEdit.setEnabled(False)
         else:
             return
@@ -61,6 +61,9 @@ class RoutineSetSleepTime(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
+        globals.morningTime = self.morningTimeEdit.text()
+        globals.nightTime = self.nightTimeEdit.text()
+
         rsi = RoutineSleepInterval()
         self.close()
         rsi.exec()

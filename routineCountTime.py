@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import *
-import globals
+from globals import Global
 
 
 class RoutineCountTime(QDialog):
@@ -21,7 +21,7 @@ class RoutineCountTime(QDialog):
         self.tableWidget.move(20, 35)
         self.tableWidget.resize(270, 110)
         # row수는 사용자 설정에 따라 달라짐
-        self.tableWidget.setRowCount(int(globals.routineCount))
+        self.tableWidget.setRowCount(int(Global.routineCount))
         self.tableWidget.setColumnCount(1)
 
         # tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -41,7 +41,7 @@ class RoutineCountTime(QDialog):
         # timeEdit = QTimeEdit(self)
         # tableWidget.setCellWidget(0, 0, timeEdit)
         self.timeList = []
-        for i in range(int(globals.routineCount)):
+        for i in range(int(Global.routineCount)):
             self.timeEdit = QTimeEdit(self)
             self.timeEdit.setDisplayFormat('hh:mm')
             self.tableWidget.setCellWidget(i, 0, self.timeEdit)
@@ -64,17 +64,17 @@ class RoutineCountTime(QDialog):
 
     def next(self):
         self.inputList = []
-        for i in range(int(globals.routineCount)):
+        for i in range(int(Global.routineCount)):
             self.inputList.append(self.timeList[i].text())
-        print(self.inputList)
-        print(sorted(self.inputList))
         if self.inputList != sorted(self.inputList):
             QMessageBox.warning(self, "입력 오류", "시간 순서대로 입력해야 합니다.\n입력 하신 내용을 다시 확인 해주세요.")
             return
         buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
             # 지금까지의 설정 정리 요약해서 main에 띄워줘야함
-            pass
+            Global.countTimeList = self.inputList
+            Global.mainDlg.identifyMethod()
+            self.close()
         elif buttonReply == QMessageBox.No:
             return
 

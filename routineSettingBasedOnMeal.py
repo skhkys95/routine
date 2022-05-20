@@ -2,7 +2,7 @@ import sys
 
 from PySide6.QtWidgets import *
 from routineSetMeal import RoutineSetMeal
-import globals
+from globals import Global
 
 
 class RoutineSettingBasedOnMeal(QDialog):
@@ -58,14 +58,14 @@ class RoutineSettingBasedOnMeal(QDialog):
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
     # 경우의 수 3가지에 따라 다른 상태를 저장한 변수를 만들어서 다음 파일에서 확인해서 그에 맞는 상황 연출
     def next(self):
-        globals.checked = []
+        Global.checked = []
         if self.routineMealBreakfast.isChecked():
-            globals.checked.append("breakfast")
+            Global.checked.append("breakfast")
         if self.routineMealLunch.isChecked():
-            globals.checked.append("lunch")
+            Global.checked.append("lunch")
         if self.routineMealDinner.isChecked():
-            globals.checked.append("dinner")
-        if not globals.checked:
+            Global.checked.append("dinner")
+        if not Global.checked:
             QMessageBox.warning(self, "입력 오류", "양식에 맞지 않습니다.\n입력 하신 내용을 다시 확인해주세요.")
             return
         else:

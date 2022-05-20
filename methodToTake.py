@@ -4,7 +4,7 @@ from PySide6.QtWidgets import *
 from routineSettingBasedOnCount import RoutineSettingBasedOnCount
 from routineSettingBasedOnMeal import RoutineSettingBasedOnMeal
 from routineSettingBasedOnSleep import RoutineSettingBasedOnSleep
-import globals
+from globals import Global
 
 
 class MethodToTake(QDialog):
@@ -45,16 +45,16 @@ class MethodToTake(QDialog):
 
     # 양식에 이상이 없으면 사용자가 입력한 내용을 저장해서 보관
     def next(self):
-        globals.routineMethodName = self.routineMethod.currentText()
-        if globals.routineMethodName == '횟수 기반':
+        Global.routineMethodName = self.routineMethod.currentText()
+        if Global.routineMethodName == '횟수 기반':
             rsboc = RoutineSettingBasedOnCount()
             self.close()
             rsboc.exec()
-        elif globals.routineMethodName == '수면 기반':
+        elif Global.routineMethodName == '수면 기반':
             rsbos = RoutineSettingBasedOnSleep()
             self.close()
             rsbos.exec()
-        elif globals.routineMethodName == '식사 기반':
+        elif Global.routineMethodName == '식사 기반':
             rsbom =RoutineSettingBasedOnMeal()
             self.close()
             rsbom.exec()

@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/globals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methodToTake.py" beforeDir="false" afterPath="$PROJECT_DIR$/methodToTake.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineCountTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineCountTime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineMealInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineMealInterval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSetMeal.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetMeal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSetSleepTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetSleepTime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSetting.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnCount.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnCount.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnMeal.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnMeal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnSleep.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnSleep.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineSleepInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSleepInterval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +59,7 @@
       <recent name="C:\Users\3DONS\PycharmProjects\routine" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.routineSettingBasedOnCount">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -70,7 +81,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="methodToTake" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="organizeSetting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -82,7 +93,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/methodToTake.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/organizeSetting.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,6 +123,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="routineSetSleepTime" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="routine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routineSetSleepTime.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="routineSettingBasedOnCount" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,34 +165,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="routineSleepInterval" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="routine" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routineSleepInterval.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.routineSettingBasedOnCount" />
         <item itemvalue="Python.routineCountTime" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.routineSleepInterval" />
-        <item itemvalue="Python.methodToTake" />
+        <item itemvalue="Python.organizeSetting" />
+        <item itemvalue="Python.routineSetSleepTime" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652839697031</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)">
+      <created>1652848400550</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652848400550</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,6 +310,16 @@
           <url>file://$PROJECT_DIR$/test.py</url>
           <line>66</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/routineCountTime.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

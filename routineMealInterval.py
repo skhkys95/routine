@@ -1,5 +1,8 @@
+import re
 import sys
 from PySide6.QtWidgets import *
+
+from globals import Global
 
 class RoutineMealInterval(QDialog):
     def __init__(self):
@@ -41,6 +44,8 @@ class RoutineMealInterval(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
+        Global.mealInterval = self.routineInterval.currentText()
+        Global.mealInterval = re.sub(r'[^0-9]','',self.routineInterval.currentText())
         buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
             # 지금까지의 설정 정리 요약해서 main에 띄워줘야함

@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import *
 
-import globals
+from globals import Global
 from routineMealInterval import RoutineMealInterval
 
 
@@ -56,11 +56,11 @@ class RoutineSetMeal(QDialog):
 
     # 이전 설정에서 받아온 변수에 따라 시간 옵션 받기
     def setMorningOrNight(self):
-        if 'breakfast' not in globals.checked:
+        if 'breakfast' not in Global.checked:
             self.breakfastTimeEdit.setEnabled(False)
-        if 'lunch' not in globals.checked:
+        if 'lunch' not in Global.checked:
             self.lunchTimeEdit.setEnabled(False)
-        if 'dinner' not in globals.checked:
+        if 'dinner' not in Global.checked:
             self.dinnerTimeEdit.setEnabled(False)
 
     # 넥스트를 눌렸을때 바로 넘어가는것이 아니고 빈칸이 있는지 확인하고 있으면 입력 양식이 맞지 않으니 다시 입력하라고 경고하고 돌려보내기
@@ -69,6 +69,9 @@ class RoutineSetMeal(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
+        Global.breakfastTime = self.breakfastTimeEdit.text()
+        Global.lunchTime = self.lunchTimeEdit.text()
+        Global.dinnerTime = self.dinnerTimeEdit.text()
         self.close()
         rsi = RoutineMealInterval()
         rsi.exec()
