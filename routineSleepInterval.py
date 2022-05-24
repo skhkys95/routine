@@ -47,13 +47,80 @@ class RoutineSleepInterval(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
-        Global.sleepInterval = self.routineInterval.currentText()
-        Global.sleepIntervalTime = re.sub(r'[^0-9]','',Global.sleepInterval)
-
         buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
             # 지금까지의 설정 정리 요약해서 main에 띄워줘야함
-            pass
+            Global.sleepInterval = self.routineInterval.currentText()
+            Global.explainSleep1 = '기상'+ Global.sleepInterval + '후'
+            Global.explainSleep2 = '취침'+ Global.sleepInterval + '전'
+            Global.explainSleepList = [Global.explainSleep1, Global.explainSleep2]
+            # 숫자만 나오게 뽑아주는 함수
+            Global.sleepIntervalTime = re.sub(r'[^0-9]', '', Global.sleepInterval)
+            # 기상, 취침시간 받고 간격을 받아서 기상시간에는 간격을 더하고, 취침시간에는 간격을 빼서 테이블에 표현되는 시간에 나타낸다
+            if int(Global.sleepIntervalTime) == 30:
+                h , m = map(int, Global.morningTime.split(':'))
+
+                if m > 30:
+                    if h == 23:
+                        h = 0
+                        m -= 30
+                    else:
+                        h += 1
+                        m -= 30
+                else:
+                    m += 30
+
+                print(Global.morningTime)
+
+                H, M = map(int, Global.nightTime.split(':'))
+
+                if M < 30:
+                    if H == 0:
+                        H = 23
+                        M += 30
+                    else:
+                        H -= 1
+                        M += 30
+                else:
+                    M -= 30
+
+                print(Global.nightTime)
+            elif int(Global.sleepIntervalTime) == 1:
+                h, m = map(int, Global.morningTime.split(':'))
+                if h == 23:
+                    h=0
+                else:
+                    h += 1
+
+                H, M = map(int, Global.nightTime.split(':'))
+                if H == 0:
+                    H = 23
+                else:
+                    H -= 1
+
+            elif int(Global.sleepIntervalTime) == 2:
+                h, m = map(int, Global.morningTime.split(':'))
+                if h == 22:
+                    h = 0
+                elif h == 23:
+                    h = 1
+                else:
+                    h += 2
+
+                H, M = map(int, Global.nightTime.split(':'))
+                if H == 0:
+                    H = 22
+                elif H == 1:
+                    H = 23
+                else:
+                    H -= 2
+
+            Global.morningTime = str(h) + ":" + str(m)
+            Global.nightTime = str(H) + ":" + str(M)
+            Global.sleepTimeList = [Global.morningTime, Global.nightTime]
+
+            Global.mainDlg.identifyMethod()
+            self.close()
         elif buttonReply == QMessageBox.No:
             return
 

@@ -3,7 +3,7 @@ import os.path
 
 from PySide6.QtCore import QTimer, QTime, QDateTime
 from PySide6.QtWidgets import *
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, Qt
 from globals import Global
 from login import Login
 from routineSetting import RoutineSetting
@@ -19,6 +19,8 @@ class Main(QMainWindow):
         loginModal.exec()
         # 사실은 여기서 로그인을 성공하고 난 뒤 사용자가 setting이 있는지 없는지 판단해서 없으면 바로 setting으로 넘겨야됨
         self.initUI()
+        # 정책상으로는 initUI를 띄워주고 그 위에 모달창으로 루틴 세팅이 나오도록 하는것이 목표이나 self.show를 하면 그렇게 되지만 설정이 끝난후에 tablewidget이 안나온다...!!!!!!!!!!!
+        self.existRoutine()
         self.timer = QTimer(self)
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.alarm_box)
@@ -45,9 +47,7 @@ class Main(QMainWindow):
                 #     return
         # 아니면 고대로 account.txt에 입력해주고 account 생성
         else:
-            routineSet = RoutineSetting()
-            routineSet.exec()
-
+            return
 
     def initUI(self):
         self.setWindowTitle("My Medicine Routine")
@@ -81,6 +81,7 @@ class Main(QMainWindow):
         pixmap = QPixmap("C:\\Users\\3DONS\\PycharmProjects\\routine\\target_pic.png")
         pic_target.setPixmap(pixmap)
 
+        # 루틴 설정전에는 안나오다가 설정되면 나오는게 맞음
         global pic_peel
         pic_peel = QLabel(self)
         pic_peel.move(250, 37)
@@ -93,14 +94,11 @@ class Main(QMainWindow):
         checkList.move(150, 140)
         checkList.resize(390, 390)
 
-
-
-        # progress bar 생성
-        progressBar = QProgressBar(self)
-        progressBar.setGeometry(180, 550, 370, 40)
-        progressBar.setMinimum(0)
-        # 최대값은 사용자의 설정에 따라 정해짐
-        progressBar.setMaximum(5)
+        infoMessage = QLabel('              설정된 루틴이 없습니다. \n 하단의 Setting으로 이동하여 루틴을 설정해주세요.',self)
+        infoMessage.move(210,150)
+        infoMessage.resize(300,300)
+        infoMessage.setScaledContents(100)
+        infoMessage.setAlignment(Qt.AlignVCenter)
 
         # information 그룹박스
         information = QGroupBox('Information', self)
@@ -119,13 +117,11 @@ class Main(QMainWindow):
         statBnt = QPushButton('Stat', self)
         statBnt.move(580, 640)
         statBnt.resize(85, 40)
-        self.existRoutine()
 
     # rowNum = 설정 방식에 따른 setRowCount 값을 넣어두는 곳
     def identifyMethod(self):
         if Global.routineMethodName == '횟수 기반':
             self.rowNum = Global.routineCount
-            print("id1")
         elif Global.routineMethodName == '수면 기반':
             self.rowNum = Global.sleepCount
         elif Global.routineMethodName == '식사 기반':
@@ -137,7 +133,6 @@ class Main(QMainWindow):
         self.tableWidget.move(160, 160)
         self.tableWidget.resize(370, 360)
         # row수는 사용자 설정에 따라 달라짐
-        # self.identifyMethod()
 
         self.tableWidget.setRowCount(int(self.rowNum))
         self.tableWidget.setColumnCount(4)
@@ -152,7 +147,7 @@ class Main(QMainWindow):
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         # tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
-
+        self.tableWidget.show()
         # tableWidget.setItem(i,0,QTableWidgetItem("계산된 설정 시간")
         # tableWidget.setItem((i,1, QTableWidgetItem"설정된 이름"))
         self.checkBoxList = []
@@ -163,6 +158,15 @@ class Main(QMainWindow):
             self.tableWidget.setItem(i, 1, QTableWidgetItem(Global.medicineName))
             self.checkBox.stateChanged.connect(self.check_state_checkBox)
             self.checkBoxList.append(self.checkBox)
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        # progress bar 생성
+        self.progressBar = QProgressBar(self)
+        self.progressBar.setGeometry(180, 550, 370, 40)
+        self.progressBar.setMinimum(0)
+        # 최대값은 사용자의 설정에 따라 정해짐
+        self.progressBar.setMaximum(int(self.rowNum))
+        self.progressBar.show()
 
         self.identifyMethod2()
 
@@ -170,15 +174,16 @@ class Main(QMainWindow):
         if Global.routineMethodName == '횟수 기반':
             for i in range(int(self.rowNum)):
                 self.tableWidget.setItem(i, 0, QTableWidgetItem(Global.countTimeList[i]))
-                self.tableWidget.setItem(i, 2, QTableWidgetItem(i))
-            print("id2")
+                self.tableWidget.setItem(i, 2, QTableWidgetItem(str(i+1) + '회차'))
+
         elif Global.routineMethodName == '수면 기반':
-            pass
+            for i in range(int(self.rowNum)):
+                self.tableWidget.setItem(i, 0, QTableWidgetItem(Global.sleepTimeList[i]))
+                self.tableWidget.setItem(i, 2, QTableWidgetItem(Global.explainSleepList[i]))
         elif Global.routineMethodName == '식사 기반':
             pass
         else:
             return
-
 
     def clicked_routineSetting(self):
         routineSet = RoutineSetting()
@@ -186,7 +191,10 @@ class Main(QMainWindow):
 
     # checkBox의 상태가 변할때에 나오는 함수로, 시간 값을 바꿔주는 역할 + range 밖에서 선택했을때는 makeup option으로 유도하는 역할 + progress bar 게이지 올려주는 역할
     def check_state_checkBox(self, state):
-        pass
+        # for i in range(len(self.checkBoxList)):
+        self.step = self.progressBar.value()
+        self.step += 1
+        self.progressBar.setValue(self.step)
 
     def closeEvent(self, QCloseEvent):
         close = QMessageBox.question(self, "종료 확인", "종료 하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
@@ -218,6 +226,10 @@ class Main(QMainWindow):
         self.setDistancePerTime += 0.05
         pic_peel.move(self.setDistancePerTime, 37)
 
+
+    # def showEvent(self, ev):
+    #     print('show')
+    #     self.existRoutine()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

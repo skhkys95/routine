@@ -14,6 +14,7 @@ class Global:
     sleepIntervalTime = ''  # 간격 시간을 받아서 숫자만 문자열로 받아놓음
     morningTime = ''  # 아침 기상 시간
     nightTime = ''  # 저녁 취침 시간
+    sleepTimeList = [] # 수면 시간을 담은 리스트
 
     # 식사 기반 : 아침 or 점심 or 저녁 설정, 그에 따른 시간, 간격
     identifyMeal = ''

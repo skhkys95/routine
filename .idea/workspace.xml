@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)">
+    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/globals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methodToTake.py" beforeDir="false" afterPath="$PROJECT_DIR$/methodToTake.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineCountTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineCountTime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineMealInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineMealInterval.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineSetMeal.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetMeal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineSetSleepTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetSleepTime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineSetting.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnCount.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnCount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnMeal.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnMeal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSettingBasedOnSleep.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSettingBasedOnSleep.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineSleepInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSleepInterval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +75,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="organizeSetting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="retest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="routine" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -93,28 +87,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/organizeSetting.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="routineCountTime" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="routine" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routineCountTime.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/retest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,13 +138,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="routineSettingBasedOnSleep" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="routine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routineSettingBasedOnSleep.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.routineSettingBasedOnCount" />
-        <item itemvalue="Python.routineCountTime" />
-        <item itemvalue="Python.organizeSetting" />
+        <item itemvalue="Python.routineSettingBasedOnSleep" />
+        <item itemvalue="Python.retest" />
         <item itemvalue="Python.routineSetSleepTime" />
+        <item itemvalue="Python.routineSettingBasedOnCount" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652848400550</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)">
+      <created>1653039750214</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653039750215</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,7 +292,8 @@
     <MESSAGE value="루틴 설정 완성도 70%" />
     <MESSAGE value="루틴 설정 3가지 방식 UI는 다 완성! 오예" />
     <MESSAGE value="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)" />
-    <option name="LAST_COMMIT_MESSAGE" value="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)" />
+    <MESSAGE value="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -313,13 +315,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/routineCountTime.py</url>
-          <line>74</line>
-          <option name="timeStamp" value="21" />
+          <line>194</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

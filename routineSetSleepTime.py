@@ -29,10 +29,12 @@ class RoutineSetSleepTime(QDialog):
         nightTime.resize(100, 80)
 
         self.morningTimeEdit = QTimeEdit(self)
+        self.morningTimeEdit.setDisplayFormat('hh:mm')
         self.morningTimeEdit.move(140, 50)
         self.morningTimeEdit.resize(100, 30)
 
         self.nightTimeEdit = QTimeEdit(self)
+        self.nightTimeEdit.setDisplayFormat('hh:mm')
         self.nightTimeEdit.move(140, 90)
         self.nightTimeEdit.resize(100, 30)
 
@@ -61,9 +63,8 @@ class RoutineSetSleepTime(QDialog):
     # 메세지 박스 띄워서 설정대로 루틴을 등록하겠습니까? 물어보기
 
     def next(self):
-        globals.morningTime = self.morningTimeEdit.text()
-        globals.nightTime = self.nightTimeEdit.text()
-
+        Global.morningTime = self.morningTimeEdit.text()
+        Global.nightTime = self.nightTimeEdit.text()
         rsi = RoutineSleepInterval()
         self.close()
         rsi.exec()

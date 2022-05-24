@@ -33,14 +33,17 @@ class RoutineSetMeal(QDialog):
         dinnerTime.resize(100, 80)
 
         self.breakfastTimeEdit = QTimeEdit(self)
+        self.breakfastTimeEdit.setDisplayFormat('hh:mm')
         self.breakfastTimeEdit.move(140, 50)
         self.breakfastTimeEdit.resize(100, 30)
 
         self.lunchTimeEdit = QTimeEdit(self)
+        self.lunchTimeEdit.setDisplayFormat('hh:mm')
         self.lunchTimeEdit.move(140, 90)
         self.lunchTimeEdit.resize(100, 30)
 
         self.dinnerTimeEdit = QTimeEdit(self)
+        self.dinnerTimeEdit.setDisplayFormat('hh:mm')
         self.dinnerTimeEdit.move(140, 130)
         self.dinnerTimeEdit.resize(100, 30)
 
