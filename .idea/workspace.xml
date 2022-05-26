@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)">
+    <list default="true" id="a10174d6-7bcd-489d-8f29-af5a17bee42c" name="Changes" comment="로그인 - 메인 (라벨에서 세팅 유도)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/globals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSetMeal.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetMeal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSetSleepTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetSleepTime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routineSetting.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSetting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routineMealInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineMealInterval.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routineSleepInterval.py" beforeDir="false" afterPath="$PROJECT_DIR$/routineSleepInterval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653039750215</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="로그인 - 메인 (라벨에서 세팅 유도)">
+      <created>1653386508896</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1653386508896</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -293,7 +296,8 @@
     <MESSAGE value="루틴 설정 3가지 방식 UI는 다 완성! 오예" />
     <MESSAGE value="화면 전환될 때 다음 화면으로 갈때 기존 화면을 지워주고, 이전 화면으로 가면 기존 화면을 지우고 이전 화면을 띄움(self.close, import locally 이용)" />
     <MESSAGE value="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인 - 메인 - 루틴설정 관계 정립&#10;(로그인 성공 -&gt; 루틴설정이 없으면: 메인 화면 without 테이블위젯 + 모달창으로 루팅설정 시작, 루틴 설정이 있으면 메인화면 with 테이블위젯)" />
+    <MESSAGE value="로그인 - 메인 (라벨에서 세팅 유도)" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 - 메인 (라벨에서 세팅 유도)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,11 +316,6 @@
           <url>file://$PROJECT_DIR$/test.py</url>
           <line>66</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>194</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

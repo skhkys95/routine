@@ -88,7 +88,7 @@ class RoutineSleepInterval(QDialog):
             elif int(Global.sleepIntervalTime) == 1:
                 h, m = map(int, Global.morningTime.split(':'))
                 if h == 23:
-                    h=0
+                    h = 0
                 else:
                     h += 1
 

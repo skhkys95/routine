@@ -4,6 +4,7 @@ from PySide6.QtWidgets import *
 
 from globals import Global
 
+
 class RoutineMealInterval(QDialog):
     def __init__(self):
         super().__init__()
@@ -23,7 +24,7 @@ class RoutineMealInterval(QDialog):
         routineName.resize(100, 80)
 
         self.routineInterval = QComboBox(self)
-        self.routineInterval.addItems(['1시간 전','30분 전', '식사 중', '30분 후', '1시간 후'])
+        self.routineInterval.addItems(['1시간 전', '30분 전', '식사 중', '30분 후', '1시간 후'])
 
         self.routineInterval.move(90, 70)
         self.routineInterval.resize(185, 30)
@@ -45,10 +46,20 @@ class RoutineMealInterval(QDialog):
 
     def next(self):
         Global.mealInterval = self.routineInterval.currentText()
-        Global.mealInterval = re.sub(r'[^0-9]','',self.routineInterval.currentText())
+        # Global.mealInterval = re.sub(r'[^0-9]', '', self.routineInterval.currentText())
         buttonReply = QMessageBox.information(self, "입력 확인", "설정대로 루틴을 등록하시겠습니까?", QMessageBox.Yes | QMessageBox.No)
+        # 콤보박스에서 받은 정보를 바탕으로 5가지 경우를 어떻게 정리해서 쉽게 나타낼지 고민
+        # if Global.mealInterval == '1시간 전':
+        #     h, m = map(int, Global.breakfastTime.split(':'))
+        #     if h == 0:
+        #         h = 23
+        #     else:
+        #         h -= 1
+
         if buttonReply == QMessageBox.Yes:
             # 지금까지의 설정 정리 요약해서 main에 띄워줘야함
+            Global.mainDlg.identifyMethod()
+            self.close()
             pass
         elif buttonReply == QMessageBox.No:
             return
@@ -58,6 +69,7 @@ class RoutineMealInterval(QDialog):
         rsm = RoutineSetMeal()
         self.close()
         rsm.exec()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
